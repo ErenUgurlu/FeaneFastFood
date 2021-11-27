@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FeaneFastFood.Models
+namespace EntityLayer.Concrete
 {
     public class Category
     {

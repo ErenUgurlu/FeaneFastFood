@@ -4,12 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FeaneFastFood.Models
+namespace EntityLayer.Concrete
 {
     public class Order
     {
-        public int Id { get; set; }
-        public int? UserId { get; set; }
+        public Guid Id { get; set; }
         public double? TotalPrice { get; set; }
         public double? Discount { get; set; }
         public double? ShipmentPrice { get; set; }

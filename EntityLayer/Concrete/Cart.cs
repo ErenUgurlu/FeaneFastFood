@@ -4,15 +4,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FeaneFastFood.Models
+namespace EntityLayer.Concrete
 {
     public class Cart
     {
-        public int Id { get; set; }
-        public int UserId { get; set; }
-        [ForeignKey("UserId")]
-        public ApplicationUser ApplicationUser { get; set; }
-        public int? FoodId { get; set; }
+        public Guid Id { get; set; }
+        public Guid? FoodId { get; set; }
         [ForeignKey("FoodId")]
         public Food Food { get; set; }
         public double Price { get; set; }
