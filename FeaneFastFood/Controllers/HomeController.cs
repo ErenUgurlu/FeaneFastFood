@@ -23,6 +23,7 @@ namespace FeaneFastFood.Controllers
             return View();
         }
 
+
         public IActionResult Privacy()
         {
             return View();
