@@ -19,6 +19,7 @@ namespace DataAccessLayer.Concrete
         }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         public DbSet<Discount> Discounts { get; set; }
         public DbSet<Food> Foods { get; set; }
         public DbSet<Img> Imgs { get; set; }
