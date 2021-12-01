@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {
-    class CategoryRepository : ICategoryDal1
+    class CategoryRepository : ICategoryDal
     {
         Context context = new Context();
         public void Add(Category category)
@@ -26,6 +26,16 @@ namespace DataAccessLayer.Repositories
         public Category GetById(Guid id)
         {
             return context.Categories.Find(id);
+        }
+
+        public List<Category> GetListAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Insert(Category t)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Category> ListAllCategory()
