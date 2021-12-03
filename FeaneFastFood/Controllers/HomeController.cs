@@ -1,4 +1,6 @@
-﻿using FeaneFastFood.Models;
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
+using FeaneFastFood.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,9 +13,11 @@ namespace FeaneFastFood.Controllers
 {
     public class HomeController : Controller
     {
+        readonly FoodManager foodManager = new(new EfFoodRepository());
         public IActionResult Index()
         {
-            return View();
+            var foods = foodManager.GetAllWithCategory();
+            return View(foods);
         }
     }
 }

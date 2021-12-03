@@ -10,7 +10,7 @@ namespace EntityLayer.Concrete
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public double Price { get; set; }
+        public int Price { get; set; }
         public bool IsInStock { get; set; }
         public string Detail { get; set; }
         public Guid CategoryId { get; set; }
