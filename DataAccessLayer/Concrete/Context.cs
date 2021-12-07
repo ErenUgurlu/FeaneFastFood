@@ -22,7 +22,6 @@ namespace DataAccessLayer.Concrete
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Discount> Discounts { get; set; }
         public DbSet<Food> Foods { get; set; }
-        public DbSet<Img> Imgs { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
     }

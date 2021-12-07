@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace FeaneFastFood.Controllers
 {
-    public class BookController : Controller
+    public class CommentController : Controller
     {
         public IActionResult Index()
         {
+            ViewBag.comment = "active";
             return View();
         }
     }

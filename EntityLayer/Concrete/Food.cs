@@ -16,5 +16,6 @@ namespace EntityLayer.Concrete
         public Guid CategoryId { get; set; }
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
+        public string ImgPath { get; set; }
     }
 }

@@ -16,6 +16,7 @@ namespace FeaneFastFood.Controllers
         readonly FoodManager foodManager = new(new EfFoodRepository());
         public IActionResult Index()
         {
+            ViewBag.home = "active";
             var foods = foodManager.GetAllWithCategory();
             return View(foods);
         }

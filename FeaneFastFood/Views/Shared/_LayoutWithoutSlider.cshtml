@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -31,24 +35,15 @@
     <link href="feane/css/responsive.css" rel="stylesheet" />
 
 </head>
-
-<body>
-
+<body class="sub_page">
     <div class="hero_area">
-
         <!-- header section strats -->
         @await Html.PartialAsync("_Header")
         <!-- end header section -->
-
-        @await Html.PartialAsync("_DiscountSlider")
-
-
     </div>
 
     @RenderBody()
 
-
-   
     <!-- footer section -->
     @await Html.PartialAsync("_Footer")
     <!-- footer section -->
