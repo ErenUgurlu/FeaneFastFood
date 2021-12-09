@@ -24,5 +24,6 @@ namespace DataAccessLayer.Concrete
         public DbSet<Food> Foods { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Comment>
+
+<section class="client_section layout_padding">
+    <div class="container">
+        <div class="heading_container heading_center psudo_white_primary mb_45 ">
+            <h2>
+                What Says Our Customers
+            </h2>
+        </div>
+        <div class="carousel-wrap row ">
+            <div class="owl-carousel client_owl-carousel">
+                @foreach (var item in Model)
+                {
+                    <div class="item">
+                        <div class="box">
+                            <div class="detail-box">
+                                <p>
+                                    @item.Text
+                                </p>
+                                <h6>
+                                    @item.Id
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

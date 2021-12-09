@@ -33,4 +33,5 @@
         </div>
     </div>
 </section>
-@await Html.PartialAsync("_Comments")
+@*await Html.PartialAsync("_Comments")*@
+@await Component.InvokeAsync("Comments")
