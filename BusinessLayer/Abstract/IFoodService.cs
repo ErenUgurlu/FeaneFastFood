@@ -7,13 +7,8 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    interface IFoodService
+    interface IFoodService : IGenericService<Food>
     {
-        void Add(Food food);
-        void Update(Food food);
-        void Delete(Food food);
-        List<Food> GetAll();
         List<Food> GetAllWithCategory();
-        Food GetById(Guid id);
     }
 }

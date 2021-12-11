@@ -7,12 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    interface ICategoryService
+    interface ICategoryService : IGenericService<Category>
     {
-        void Add(Category category);
-        void Update(Category category);
-        void Delete(Category category);
-        List<Category> GetAll();
-        Category GetById(Guid id);
     }
 }
