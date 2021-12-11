@@ -7,12 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    interface IUserService
+    interface IUserService : IGenericService<User>
     {
-        void Add(User user);
-        void Update(User user);
-        void Delete(User user);
-        List<User> GetAll();
-        User GetById(Guid id);
     }
 }
