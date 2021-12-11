@@ -3,6 +3,16 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<div>
+    @if (TempData["SuccessfulAdd"] != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                swal("Registration Successful", '@TempData["SuccessfulAdd"]', "success");
+            };
+        </script>
+    }
+</div>
 
 <section class="food_section layout_padding-bottom">
     <div class="container">

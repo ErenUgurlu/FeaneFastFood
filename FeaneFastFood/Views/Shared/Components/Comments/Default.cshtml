@@ -17,9 +17,17 @@
                                 <p>
                                     @item.Text
                                 </p>
-                                <h6>
-                                    @item.Id
-                                </h6>
+
+                                @if (@item.User == null)
+                                {
+                                    <h6>Guest</h6>
+                                }
+                                else
+                                {
+                                    <h6>@item.User.Name</h6>
+                                }
+
+
                             </div>
                         </div>
                     </div>

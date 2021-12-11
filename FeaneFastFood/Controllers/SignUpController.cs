@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -20,10 +22,26 @@ namespace FeaneFastFood.Controllers
         [HttpPost]
         public IActionResult Index(User user)
         {
-            user.Id = Guid.NewGuid();
-            user.Authority = "Customer";
-            um.Add(user);
-            return RedirectToAction("Index","Home");
+            UserValidator userValidator = new UserValidator();
+            ValidationResult results = userValidator.Validate(user);
+            if(results.IsValid)
+            {
+                
+                user.Id = Guid.NewGuid();
+                user.Authority = "Customer";
+                um.Add(user);
+                TempData["SuccessfulAdd"] = ("Welcome "+user.Name);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
+
         }
     }
 }

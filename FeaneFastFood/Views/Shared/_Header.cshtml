@@ -7,7 +7,7 @@
 <header class="header_section">
     <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
                 <span>
                     Feane
                 </span>
@@ -34,7 +34,8 @@
                     </li>
                 </ul>
                 <div class="user_option">
-                    <a asp-controller="SignUp" asp-action="Index" class="user_link">
+                    
+                    <a class="user_link login-trigger" href="" data-target="#login" data-toggle="modal">
                         <i class="fa fa-user" aria-hidden="true"></i>
                     </a>
                     <a class="cart_link" href="#">
@@ -91,11 +92,6 @@
                   </g>
                 </svg>
                     </a>
-                    <form class="form-inline">
-                        <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </button>
-                    </form>
                     <a href="" class="order_online">
                         Order Online
                     </a>
@@ -104,3 +100,4 @@
         </nav>
     </div>
 </header>
+@await Html.PartialAsync("_UserPopUp");
