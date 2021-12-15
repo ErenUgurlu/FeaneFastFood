@@ -18,15 +18,40 @@ namespace FeaneFastFood.Controllers
 {
     public class HomeController : Controller
     {
-        readonly FoodManager foodManager = new(new EfFoodRepository());
-        public IActionResult Index()
+        readonly FoodManager foodManager = new(new EfFoodRepository());         
+        static readonly List<Food> orders = new();
+
+
+        public IActionResult Index(Guid foodInCart)
         {
+            
             ViewBag.home = "active";
             var foods = foodManager.GetAllWithCategory();
+            if(foodInCart != Guid.Empty)
+            {
+
+                if (orders.Find(x => x.Id == foodInCart) == null)
+                {
+                    orders.Add(foodManager.GetById(foodInCart));
+                }
+                else
+                {
+                    orders.Find(x => x.Id == foodInCart).InCartQuantity += 1;
+                }
+                    
+                
+            }
+            ViewBag.Data = orders;
+            if (foodInCart != Guid.Empty)
+            {
+                return RedirectToAction("Index", "Home");
+
+            }
+
             return View(foods);
         }
         [HttpPost]
-        public async Task<IActionResult> Index(User user)
+        public async Task<IActionResult> Index(User user)       //Sign In Action
         {
             Context c = new Context();
             var datavalue = c.Users.FirstOrDefault(x => x.Email == user.Email && x.Password == user.Password);
@@ -47,5 +72,7 @@ namespace FeaneFastFood.Controllers
             }
             
         }
+
+
     }
 }
