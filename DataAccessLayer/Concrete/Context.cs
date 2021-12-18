@@ -17,7 +17,6 @@ namespace DataAccessLayer.Concrete
             optionsBuilder.UseSqlServer("Server=localhost;Database=aspnet-FeaneFastFood;Trusted_Connection=True;MultipleActiveResultSets=true");
 
         }
-        public DbSet<Cart> Carts { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Discount> Discounts { get; set; }

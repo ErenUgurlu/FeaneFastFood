@@ -9,9 +9,14 @@ namespace EntityLayer.Concrete
     public class Order
     {
         public Guid Id { get; set; }
-        public double? TotalPrice { get; set; }
-        public double? Discount { get; set; }
-        public double? ShipmentPrice { get; set; }
+        public Guid UserId { get; set; }
+        [ForeignKey("UserId")]
+        public User User { get; set; }
+        public int TotalPrice { get; set; }
+        public Guid? DiscountId { get; set; }
+        [ForeignKey("DiscountId")]
+        public Discount Discount { get; set; }
+        public int? ShipmentPrice { get; set; }
         public DateTime OrderDate { get; set; }
         public OrderStatus OrderStatus { get; set; }
         public Payment Payment { get; set; }

@@ -15,7 +15,7 @@ namespace EntityLayer.Concrete
         public Guid? FoodId { get; set; }
         [ForeignKey("FoodId")]
         public Food Food { get; set; }
-        public double Price { get; set; }
+        public int ReducedPrice { get; set; }
         public int Quantity { get; set; }
     }
 }

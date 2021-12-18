@@ -1,0 +1,37 @@
+﻿
+<link />
+<script src="https://kit.fontawesome.com/f9275dded9.js" crossorigin="anonymous"></script>
+<link href="css/userPopUp.css" rel="stylesheet" />
+<!--Trigger-->
+
+
+<div id="login" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-body">
+                
+                <div class="containerPop" id="containerPop">
+                    <div class="form-containerPop sign-in-containerPop">
+                        <form class="popform" method="post">
+                            <h1 class="poph1">Sign in</h1>
+                            <input class="popinput" type="email" name="Email" placeholder="Email" />
+                            <input class="popinput"  type="password" name="Password" placeholder="Password" />
+                            <button class="popbutton">Sign In</button>
+                        </form>
+                    </div>
+                    <div class="overlay-containerPop">
+                        <div class="overlay">
+                            <div class="overlay-panel overlay-right">
+                                <h1 class="poph1">Hello, Friend!</h1>
+                                <p class="popp">Enter your personal details and start journey with us</p>
+                                <a asp-controller="SignUp" asp-action="Index" class="ghost popbutton" id="signUp">Sign Up</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/userPopUp.js" crossorigin="anonymous"></script>

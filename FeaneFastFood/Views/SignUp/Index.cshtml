@@ -1,4 +1,4 @@
-﻿
+﻿@model EntityLayer.Concrete.User
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutWithoutSlider.cshtml";
@@ -16,24 +16,34 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form_container">
-                    <form method="post">
+                    @using (Html.BeginForm("Index", "SignUp", FormMethod.Post))
+                    {
                         <div>
-                            <input type="text" class="form-control" placeholder="Your Name" name="Name"/>
+                            @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Your Name" })
                         </div>
                         <div>
-                            <input type="email" class="form-control" placeholder="Your e-mail" name="Email" />
+                            @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Your Email" })
+
                         </div>
                         <div>
-                            <input type="password" class="form-control" placeholder="Your password" name="Password"/>
+                            @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+                            @Html.PasswordFor(x => x.Password, new { @class = "form-control", @placeholder = "Your Password" })
+
                         </div>
                         <div class="btn_box">
-                            <button>
+                            <button >
                                 Sign Up
                             </button>
                         </div>
-                    </form>
+                    }
+
+
+
                 </div>
             </div>
         </div>
     </div>
 </section>
+
