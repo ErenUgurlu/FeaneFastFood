@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FeaneFastFood.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,15 @@ using System.Threading.Tasks;
 namespace FeaneFastFood.ViewComponents
 {
     public class Cart : ViewComponent
-    {
-        readonly FoodManager foodManager = new(new EfFoodRepository());
-        
+    {   
         public IViewComponentResult Invoke()
         {
-            return View(ViewBag.Data);
+            OrderAndFoodListVM orderAndFood = new()
+            {
+                Foods = ViewBag.Data,
+                Order = new Order()
+            };
+            return View(orderAndFood);
         }
     }
 }

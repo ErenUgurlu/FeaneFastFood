@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EntityLayer.Concrete.Food>
+﻿@model FeaneFastFood.ViewModels.OrderAndFoodListVM
 
 <button class="user_link btn bg-transparent " id="cart"><i class="fa fa-shopping-cart"></i> Cart </button>
 <div class="shopping-cart">
@@ -9,29 +9,43 @@
         </div>
         @{ var totalprice = 0;}
     </div> <!--end shopping-cart-header -->
-    @if (Model.Count() != 0)
-    {
-        @foreach (var item in Model)
+    <form asp-controller="Checkout" asp-action="Index" method="post">
+        @if (Model.Foods.Count() != 0)
         {
 
+            int counter = 0;
+            @foreach (var item in Model.Foods)
+            {
 
-            <ul class="shopping-cart-items">
-                <li class="clearfix">
-                    <img src="@item.ImgPath" alt="@item.Name" />
-                    <span class="item-name">@item.Name</span>
-                    <span class="item-detail">@item.InCartQuantity</span>
-                    <span class="item-price">$@item.Price</span>
-                    @{totalprice += item.Price * item.InCartQuantity; }
-                </li>
-            </ul>
+                <ul class="shopping-cart-items">
+                    <li class="clearfix">
+                        <img src="@item.ImgPath" alt="@item.Name" />
+                        <span class="item-name">@item.Name</span>
+                        <span class="item-detail">@item.InCartQuantity</span>
+                        <span class="item-price">$@item.Price</span>
+                        @{totalprice += item.Price * item.InCartQuantity; }
+                    </li>
+                </ul>
+                @Html.HiddenFor(x => x.Foods[counter].CategoryId);
+                @Html.HiddenFor(x => x.Foods[counter].Detail);
+                @Html.HiddenFor(x => x.Foods[counter].Id);
+                @Html.HiddenFor(x => x.Foods[counter].ImgPath);
+                @Html.HiddenFor(x => x.Foods[counter].InCartQuantity);
+                @Html.HiddenFor(x => x.Foods[counter].Name);
+                @Html.HiddenFor(x => x.Foods[counter].Price);
+                
+                counter++;
+            }
 
 
         }
-    }
-    else
-    {
-        <h6 class="mb-5">Cart Is Empty</h6>
-    }
-    <p class="cart-total">Total: $@totalprice</p>
-    <button class="btn btn-outline-warning float-right">Checkout </button>
+        else
+        {
+            <h6 class="mb-5">Cart Is Empty</h6>
+        }
+        <p class="cart-total">Total: $@totalprice</p>
+
+        <button type="submit" class="btn btn-outline-warning float-right">Checkout </button>
+    </form>
+
 </div> <!--end shopping-cart -->

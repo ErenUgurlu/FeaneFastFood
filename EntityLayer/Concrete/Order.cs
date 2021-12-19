@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,23 +19,21 @@ namespace EntityLayer.Concrete
         public Discount Discount { get; set; }
         public int? ShipmentPrice { get; set; }
         public DateTime OrderDate { get; set; }
-        public OrderStatus OrderStatus { get; set; }
-        public Payment Payment { get; set; }
+        public City City { get; set; }
+        public string Address { get; set; }
+        public string OrderNote { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
 
     }
-    public enum OrderStatus
+    public enum City
     {
-        Preparing,
-        Shipped,
-        Delivered
-    }
-    public enum Payment
-    {
-        CreditCard,
-        EFT,
-        Remittance,
-        PayAtTheDoor,
-        PaymentFailed
+        Istanbul,
+        Izmir,
+        Eskisehir,
+        Sakarya,
+        Kocaeli,
+        Bursa
     }
 }
 

@@ -15,31 +15,37 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <link rel="shortcut icon" href="feane/images/favicon.png" type="">
+    <link rel="shortcut icon" href="~/feane/images/favicon.png" type="">
 
     <title> Feane </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link href="css/cart.css" rel="stylesheet" />
+    <link href="~/css/cart.css" rel="stylesheet" />
     <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="feane/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="~/feane/css/bootstrap.css" />
 
     <!--owl slider stylesheet -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
     <!-- nice select  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
     <!-- font awesome style -->
-    <link href="/feane/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/feane/css/font-awesome.min.css" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
-    <link href="feane/css/style.css" rel="stylesheet" />
+    <link href="~/feane/css/style.css" rel="stylesheet" />
     <!-- responsive style -->
-    <link href="feane/css/responsive.css" rel="stylesheet" />
+    <link href="~/feane/css/responsive.css" rel="stylesheet" />
 
 </head>
 <body class="sub_page">
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
     <div class="hero_area">
         <!-- header section strats -->
-        @await Html.PartialAsync("_Header")
+        <div class="bg-box">
+            <img src="~/feane/images/hero-bg.jpg" alt="">
+        </div>
+        @await Html.PartialAsync("_HeaderWithoutCart")
         <!-- end header section -->
     </div>
 
@@ -49,12 +55,12 @@
     @await Html.PartialAsync("_Footer")
     <!-- footer section -->
     <!-- jQery -->
-    <script src="feane/js/jquery-3.4.1.min.js"></script>
+    <script src="~/feane/js/jquery-3.4.1.min.js"></script>
     <!-- popper js -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
     <!-- bootstrap js -->
-    <script src="feane/js/bootstrap.js"></script>
+    <script src="~/feane/js/bootstrap.js"></script>
     <!-- owl slider -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
     </script>
@@ -65,12 +71,10 @@
     <!-- sweet Alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- custom js -->
-    <script src="feane/js/custom.js"></script>
+    <script src="~/feane/js/custom.js"></script>
     <!-- cart js -->
-    <script src="js/cart.js"></script>
-
+    <script src="~/js/cart.js"></script>
 
 
 </body>
-
 </html>

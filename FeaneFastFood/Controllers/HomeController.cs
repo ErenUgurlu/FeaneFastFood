@@ -3,6 +3,7 @@ using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FeaneFastFood.Models;
+using FeaneFastFood.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -53,7 +54,7 @@ namespace FeaneFastFood.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(User user)       //Sign In Action
         {
-            Context c = new Context();
+            Context c = new();
             var datavalue = c.Users.FirstOrDefault(x => x.Email == user.Email && x.Password == user.Password);
             if (datavalue != null)
             {
@@ -72,6 +73,7 @@ namespace FeaneFastFood.Controllers
             }
             
         }
+
 
 
     }
