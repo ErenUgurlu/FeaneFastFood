@@ -1,0 +1,102 @@
+﻿@using EntityLayer.Concrete
+@model FeaneFastFood.ViewModels.OrderAndFoodListVM
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutWithoutSlider.cshtml";
+}
+
+<!-- Checkout Section Begin -->
+<section class="checkout spad">
+    <div class="container">
+        <div class="checkout__form">
+            <h4>Billing Details</h4>
+            @using (Html.BeginForm("CreateOrder", "Checkout", FormMethod.Post))
+            {
+                <div class="row">
+                    <div class="col-lg-8 col-md-6">
+                        <div class="checkout__input">
+                            <p>Address<span>*</span></p>
+                            @Html.TextBoxFor(x => x.Order.Address, new { @class = "form-control" })
+                        </div>
+                        <div class="checkout__input">
+                            <p>Town/City<span>*</span></p>
+                            @Html.DropDownListFor(x => x.Order.City, Html.GetEnumSelectList<City>(), new { @class = "form-control dropDown" })
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Phone<span>*</span></p>
+                                    @Html.TextBoxFor(x => x.Order.PhoneNumber, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Email<span>*</span></p>
+                                    @Html.TextBoxFor(x => x.Order.Email, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkout__input">
+                            <p>Order notes<span>*</span></p>
+                            @Html.TextBoxFor(x => x.Order.OrderNote, new { @class = "form-control", @placeholder = "Notes about your order, e.g. special notes for delivery." })
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="checkout__order">
+                            <h4>Your Order</h4>
+                            @{
+                                double totalPrice = 0;
+                                var counter = 0;
+                                <div class="checkout__order__products">Foods <span>Total</span></div>
+                                <ul>
+                                    @foreach (var item in Html.ViewData.Model.Foods)
+
+                                    {
+                                        <li>@item.Name (@item.InCartQuantity) <span>@(item.Price*item.InCartQuantity)</span></li>
+                                        totalPrice += (item.Price * item.InCartQuantity);
+                                        @Html.HiddenFor(x => x.Foods[counter].CategoryId);
+                                        @Html.HiddenFor(x => x.Foods[counter].Detail);
+                                        @Html.HiddenFor(x => x.Foods[counter].Id);
+                                        @Html.HiddenFor(x => x.Foods[counter].ImgPath);
+                                        @Html.HiddenFor(x => x.Foods[counter].InCartQuantity);
+                                        @Html.HiddenFor(x => x.Foods[counter].Name);
+                                        @Html.HiddenFor(x => x.Foods[counter].Price);
+                                        counter++;
+                                    }
+                                </ul>
+                                <div class="checkout__order__subtotal">Shipment <span>$@Model.Order.ShipmentPrice</span></div>
+                                <div class="checkout__order__subtotal">Subtotal <span>$@totalPrice</span></div>
+                                if (Model.Order.Discount != null)
+                                {
+                                    <div class="checkout__order__total">Discounted Total  <span>$@(((totalPrice / 100) * (100-Model.Order.Discount.DiscountRate))+Model.Order.ShipmentPrice)</span></div>
+                                }
+                                else
+                                {
+                                    <div class="checkout__order__total">Total <span>$@(totalPrice+Model.Order.ShipmentPrice)</span></div>
+                                }
+                                <div class="checkout__input__checkbox">
+                                    <label for="payment">
+                                        Check Payment
+                                        <input type="checkbox" id="payment">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                @Html.HiddenFor(x => x.Order.Discount.DiscountRate)
+                                @Html.HiddenFor(x => x.Order.Discount.Code)
+                                @Html.HiddenFor(x => x.Order.Discount.Id)
+                                @Html.HiddenFor(x => x.Order.Discount.Finish)
+                                @Html.HiddenFor(x => x.Order.Discount.Start)
+                                @Html.HiddenFor(x => x.Order.Discount.Name)
+                                @Html.HiddenFor(x => x.Order.Discount.MinPrice)
+                                @Html.HiddenFor(x => x.Order.Discount.DiscountRate)
+                                @Html.HiddenFor(x => x.Order.DiscountId)
+                                <button type="submit" class="site-btn">PLACE ORDER</button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- Checkout Section End -->
