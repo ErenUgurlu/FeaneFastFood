@@ -1,6 +1,6 @@
 ﻿@model FeaneFastFood.ViewModels.OrderAndFoodListVM
 
-<button class="user_link btn bg-transparent " id="cart"><i class="fa fa-shopping-cart"></i> Cart </button>
+<button class="user_link btn bg-transparent " id="cart"><i class="fa fa-shopping-cart"></i></button>
 <div class="shopping-cart">
     <div class="shopping-cart-header">
         <i class="fa fa-shopping-cart cart-icon"></i>
@@ -33,7 +33,7 @@
                 @Html.HiddenFor(x => x.Foods[counter].InCartQuantity);
                 @Html.HiddenFor(x => x.Foods[counter].Name);
                 @Html.HiddenFor(x => x.Foods[counter].Price);
-                
+
                 counter++;
             }
 
@@ -44,8 +44,13 @@
             <h6 class="mb-5">Cart Is Empty</h6>
         }
         <p class="cart-total">Total: $@totalprice</p>
+        @if (Model.Foods.Count() > 0)
+        {
+            <button type="submit" class="btn btn-outline-warning float-right">Checkout </button>
+        }
 
-        <button type="submit" class="btn btn-outline-warning float-right">Checkout </button>
+
+
     </form>
 
 </div> <!--end shopping-cart -->

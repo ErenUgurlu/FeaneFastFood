@@ -1,0 +1,50 @@
+﻿@using EntityLayer.Concrete
+@model List<Discount>
+
+<section class="slider_section ">
+    <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            @{ string active = "active"; }
+            @foreach (var item in Model)
+            {
+                <div class="carousel-item @active ">
+                    <div class="container ">
+                        <div class="row">
+                            <div class="col-md-7 col-lg-6 ">
+                                <div class="detail-box">
+                                    <h1>
+                                        @item.Name
+                                    </h1>
+                                    <h3>
+                                        @item.Details
+                                    </h3>
+                                    <h5>
+                                        Between dates: @item.Start.ToShortDateString() / @item.Finish.ToShortDateString()
+                                    </h5>
+                                    <h6>
+                                        Min Price is: @item.MinPrice$
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                active = "";
+            }
+        </div>
+
+        <div class="container">
+            <ol class="carousel-indicators">
+                @{int counter = 0; string liActive = "active";}
+                @foreach (var item in Model)
+                {
+                    <li data-target="#customCarousel1" data-slide-to="@counter" class="@liActive"></li>
+                    counter++;
+                    liActive = "";
+                }
+            </ol>
+        </div>
+    </div>
+
+</section>

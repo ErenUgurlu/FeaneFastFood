@@ -9,7 +9,6 @@ namespace FeaneFastFood.Controllers
 {
     public class AboutController : Controller
     {
-        [Authorize]
         public IActionResult Index()
         {
             ViewBag.about = "active";

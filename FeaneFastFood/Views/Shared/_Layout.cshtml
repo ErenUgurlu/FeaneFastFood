@@ -46,7 +46,7 @@
         @await Html.PartialAsync("_Header")
         <!-- end header section -->
 
-        @await Html.PartialAsync("_DiscountSlider")
+        @await Component.InvokeAsync("Discounts")
 
 
     </div>

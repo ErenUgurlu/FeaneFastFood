@@ -51,28 +51,6 @@ namespace FeaneFastFood.Controllers
 
             return View(foods);
         }
-        [HttpPost]
-        public async Task<IActionResult> Index(User user)       //Sign In Action
-        {
-            Context c = new();
-            var datavalue = c.Users.FirstOrDefault(x => x.Email == user.Email && x.Password == user.Password);
-            if (datavalue != null)
-            {
-                var claims = new List<Claim>
-               {
-                   new Claim(ClaimTypes.Name,user.Email)
-               };
-                var useridentity = new ClaimsIdentity(claims, "a");
-                ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
-                await HttpContext.SignInAsync(principal);
-                return RedirectToAction("Index", "About");
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            
-        }
 
 
 

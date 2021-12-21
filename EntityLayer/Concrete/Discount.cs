@@ -14,5 +14,6 @@ namespace EntityLayer.Concrete
         public DateTime Finish { get; set; }
         public int? MinPrice { get; set; }
         public int DiscountRate { get; set; }
+        public string Details { get; set; }
     }
 }

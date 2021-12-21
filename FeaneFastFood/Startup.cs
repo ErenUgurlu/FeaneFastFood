@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,11 +30,10 @@ namespace FeaneFastFood
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddSession();
+            services.AddRazorPages();
             services.AddMvc();
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(
-                x=> { x.LoginPath = "/Home"; }
-                );
+            //services.AddLocalization(options => options.ResourcesPath = "Resources");
+
         }
 
 
@@ -50,14 +50,26 @@ namespace FeaneFastFood
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            //var supportedCultures = new[]
+            //{
+            //    new CultureInfo("tr-TR"),
+            //    new CultureInfo("en-US")
+            //};
+            //var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[0])
+            //    .AddSupportedCultures(supportedCultures)
+            //    .AddSupportedUICultures(supportedCultures);
+
+            //app.UseRequestLocalization(localizationOptions);
+
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseSession();
-
-            app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404","?code={0}");
+            app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404", "?code={0}");
 
             app.UseRouting();
+
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -66,6 +78,7 @@ namespace FeaneFastFood
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

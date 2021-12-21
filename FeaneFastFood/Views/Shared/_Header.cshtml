@@ -20,8 +20,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav  mx-auto ">
 
-                        
-                    
+
+
                     <li class="nav-item @ViewBag.home">
                         <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
                     </li>
@@ -32,17 +32,14 @@
                         <a class="nav-link" asp-controller="Comment" asp-action="Index">  Leave a Comment</a>
                     </li>
                 </ul>
+                @await Html.PartialAsync("_LoginPartial")
                 <div class="user_option">
 
-                    <a class="user_link login-trigger" href="" data-target="#login" data-toggle="modal">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                    </a>
 
                     @await Component.InvokeAsync("Cart")
-
                 </div>
             </div>
         </nav>
     </div>
 </header>
-@await Html.PartialAsync("_UserPopUp")
+
