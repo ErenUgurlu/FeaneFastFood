@@ -1,19 +1,16 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
-using EntityLayer.Concrete;
-using Microsoft.AspNetCore.Identity;
 
-namespace FeaneFastFood.Areas.Identity.Data
+namespace EntityLayer.Concrete
 {
     // Add profile data for application users by adding properties to the FeaneFastFoodUser class
-    public class FeaneFastFoodUser : IdentityUser 
+    public class ApplicationUser : IdentityUser 
     {
-        [PersonalData]
         public string Name { get; set; }
-        [PersonalData]
         public string Surname { get; set; }
 
     }

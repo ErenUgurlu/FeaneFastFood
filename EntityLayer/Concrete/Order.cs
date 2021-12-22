@@ -10,9 +10,9 @@ namespace EntityLayer.Concrete
     public class Order
     {
         public Guid Id { get; set; }
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
         [ForeignKey("UserId")]
-        public User User { get; set; }
+        public ApplicationUser User { get; set; }
         public int TotalPrice { get; set; }
         public Guid? DiscountId { get; set; }
         [ForeignKey("DiscountId")]

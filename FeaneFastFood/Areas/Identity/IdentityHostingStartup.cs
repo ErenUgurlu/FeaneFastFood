@@ -1,6 +1,6 @@
 ﻿using System;
-using FeaneFastFood.Areas.Identity.Data;
-using FeaneFastFood.Data;
+using EntityLayer.Concrete;
+using DataAccessLayer.Concrete;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -16,12 +16,7 @@ namespace FeaneFastFood.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<FeaneFastFoodContext>(options =>
-                    options.UseSqlServer(
-                        context.Configuration.GetConnectionString("FeaneFastFoodContextConnection")));
-
-                services.AddDefaultIdentity<FeaneFastFoodUser>(options => options.SignIn.RequireConfirmedAccount = false)
-                    .AddEntityFrameworkStores<FeaneFastFoodContext>();
+                
             });
         }
     }

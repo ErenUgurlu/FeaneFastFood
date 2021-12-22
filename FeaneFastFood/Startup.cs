@@ -1,4 +1,5 @@
 using DataAccessLayer.Concrete;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,23 +27,41 @@ namespace FeaneFastFood
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+
+            services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddDefaultTokenProviders()
+               .AddDefaultUI()
+               .AddEntityFrameworkStores<FeaneFastFoodContext>();
+
+
             services.AddRazorPages();
+
+            services.AddDbContext<FeaneFastFoodContext>(options =>
+            options.UseSqlServer(
+            Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDatabaseDeveloperPageExceptionFilter();
+
+            services.AddControllersWithViews();
+
             services.AddMvc();
-            //services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+            services.AddScoped<IDbInitializer, DbInitializer>();
+
+
 
         }
 
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInitializer)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseMigrationsEndPoint();
             }
             else
             {
@@ -51,17 +70,8 @@ namespace FeaneFastFood
                 app.UseHsts();
             }
 
-            //var supportedCultures = new[]
-            //{
-            //    new CultureInfo("tr-TR"),
-            //    new CultureInfo("en-US")
-            //};
-            //var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[0])
-            //    .AddSupportedCultures(supportedCultures)
-            //    .AddSupportedUICultures(supportedCultures);
 
-            //app.UseRequestLocalization(localizationOptions);
-
+            dbInitializer.Initialize();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -75,10 +85,16 @@ namespace FeaneFastFood
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
+                endpoints.MapControllerRoute(
+     name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+ );
+
+                
             });
         }
     }

@@ -1,8 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@using FeaneFastFood.Areas.Identity.Data
+@using EntityLayer.Concrete
 
-@inject SignInManager<FeaneFastFoodUser> SignInManager
-@inject UserManager<FeaneFastFoodUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 
 @if (SignInManager.IsSignedIn(User))

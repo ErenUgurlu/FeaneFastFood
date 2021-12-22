@@ -7,7 +7,7 @@ using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
-using FeaneFastFood.Areas.Identity.Data;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -21,14 +21,14 @@ namespace FeaneFastFood.Areas.Identity.Pages.Account
     
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<FeaneFastFoodUser> _signInManager;
-        private readonly UserManager<FeaneFastFoodUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
-            UserManager<FeaneFastFoodUser> userManager,
-            SignInManager<FeaneFastFoodUser> signInManager,
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
@@ -83,7 +83,7 @@ namespace FeaneFastFood.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new FeaneFastFoodUser { UserName = Input.Email, Email = Input.Email, Name = Input.Name, Surname = Input.Surname };
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, Name = Input.Name, Surname = Input.Surname };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

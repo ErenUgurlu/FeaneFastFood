@@ -1,0 +1,62 @@
+﻿@model EntityLayer.Concrete.Discount
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutForIdentity.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Discount</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Code" class="control-label"></label>
+                <input asp-for="Code" class="form-control" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Start" class="control-label"></label>
+                <input asp-for="Start" class="form-control" />
+                <span asp-validation-for="Start" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Finish" class="control-label"></label>
+                <input asp-for="Finish" class="form-control" />
+                <span asp-validation-for="Finish" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinPrice" class="control-label"></label>
+                <input asp-for="MinPrice" class="form-control" />
+                <span asp-validation-for="MinPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiscountRate" class="control-label"></label>
+                <input asp-for="DiscountRate" class="form-control" />
+                <span asp-validation-for="DiscountRate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Details" class="control-label"></label>
+                <input asp-for="Details" class="form-control" />
+                <span asp-validation-for="Details" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FeaneFastFood.Areas.Identity.Data;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace FeaneFastFood.Data
+namespace DataAccessLayer.Concrete
 {
-    public class FeaneFastFoodContext : IdentityDbContext<FeaneFastFoodUser>
+    public class FeaneFastFoodContext : IdentityDbContext<ApplicationUser>
     {
         public FeaneFastFoodContext(DbContextOptions<FeaneFastFoodContext> options)
             : base(options)
@@ -19,9 +19,12 @@ namespace FeaneFastFood.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            // Customize the ASP.NET Identity model and override the defaults if needed.
-            // For example, you can rename the ASP.NET Identity table names and more.
-            // Add your customizations after calling base.OnModelCreating(builder);
         }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Discount> Discounts { get; set; }
+        public DbSet<Food> Foods { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
     }
 }

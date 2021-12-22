@@ -68,7 +68,7 @@ namespace FeaneFastFood.Controllers
                 viewModel.Order.TotalPrice = ((int)totalprice);
                 viewModel.Order.ShipmentPrice = shipmentPrice;
                 viewModel.Order.OrderDate = DateTime.Now;
-                viewModel.Order.UserId = Guid.Parse("A81F3986-8368-4C58-B4C4-85210E0564B1");
+                //viewModel.Order.UserId = "A81F3986-8368-4C58-B4C4-85210E0564B1";
                 double reducedPrice = (double)viewModel.Order.Discount.DiscountRate;
                 var a = viewModel.Order.DiscountId;
                 viewModel.Order.Discount = null;

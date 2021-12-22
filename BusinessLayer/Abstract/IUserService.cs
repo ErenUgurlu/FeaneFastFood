@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    interface IUserService : IGenericService<User>
+    interface IUserService : IGenericService<ApplicationUser>
     {
     }
 }

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FeaneFastFood
+namespace DataAccessLayer.Concrete
 {
-    public class Lang
+    public interface IDbInitializer
     {
+        void Initialize();
     }
 }

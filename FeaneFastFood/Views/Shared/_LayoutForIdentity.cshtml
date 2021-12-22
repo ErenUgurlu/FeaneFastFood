@@ -49,9 +49,14 @@
         <!-- end header section -->
     </div>
 
-        @RenderBody()
+    <div class="container">
+        <div class="m-2">
+            @RenderBody()
+        </div>
+    </div>
+   
 
-    
+
 
     <!-- footer section -->
     @await Html.PartialAsync("_Footer")

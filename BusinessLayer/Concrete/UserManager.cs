@@ -17,27 +17,27 @@ namespace BusinessLayer.Concrete
         {
             _userDal = userDal;
         }
-        public void Add(User user)
+        public void Add(ApplicationUser user)
         {
             _userDal.Insert(user);
         }
 
-        public void Delete(User user)
+        public void Delete(ApplicationUser user)
         {
             _userDal.Delete(user);
         }
 
-        public List<User> GetAll()
+        public List<ApplicationUser> GetAll()
         {
             return _userDal.GetListAll();
         }
 
-        public User GetById(Guid id)
+        public ApplicationUser GetById(Guid id)
         {
             return _userDal.GetById(id);
         }
 
-        public void Update(User user)
+        public void Update(ApplicationUser user)
         {
             _userDal.Update(user);
         }

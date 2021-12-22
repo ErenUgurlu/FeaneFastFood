@@ -11,10 +11,9 @@ namespace DataAccessLayer.Concrete
     public class Context : DbContext
     {
 
-        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost;Database=aspnet-FeaneFastFood;Trusted_Connection=True;MultipleActiveResultSets=true");
+            optionsBuilder.UseSqlServer("Server=localhost;Database=aspnet-FeaneFastFood;Trusted_Connection=True;MultipleActiveResultSets=true;MultipleActiveResultSets=true");
 
         }
         public DbSet<Category> Categories { get; set; }
@@ -23,6 +22,5 @@ namespace DataAccessLayer.Concrete
         public DbSet<Food> Foods { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
-        public DbSet<User> Users { get; set; }
     }
 }
