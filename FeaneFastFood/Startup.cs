@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,6 +30,7 @@ namespace FeaneFastFood
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddDefaultTokenProviders()
@@ -70,6 +72,19 @@ namespace FeaneFastFood
                 app.UseHsts();
             }
 
+            var supportedCultures = new[]
+{
+                new CultureInfo("tr-TR"),
+                new CultureInfo("en-US")
+
+            };
+
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("en-Us"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+            });
 
             dbInitializer.Initialize();
 
@@ -90,9 +105,9 @@ namespace FeaneFastFood
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
-     name: "areas",
-    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
- );
+                     name: "areas",
+                 pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
 
                 
             });
