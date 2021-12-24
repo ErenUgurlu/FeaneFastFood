@@ -3,6 +3,7 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
+
 <div class="bg-box">
     <img src="~/feane/images/hero-bg.jpg" alt="">
 </div>
@@ -33,22 +34,22 @@
                     <li class="nav-item @ViewBag.comment">
                         <a class="nav-link" asp-controller="Comment" asp-action="Index">  Leave a Comment</a>
                     </li>
+
                     @if (User.IsInRole("Admin"))
                     {
                         <li class="dropdown nav-item">
                             <a class="dropbtn nav-link">Admin</a>
                             <div class="dropdown-content">
-                                <a  href="/Admin/Foods">Foods</a>
+                                <a href="/Admin/Foods">Foods</a>
                                 <a href="/Admin/Discounts">Discounts</a>
                                 <a href="/Admin/Categories">Categories</a>
                             </div>
                         </li>
                     }
                 </ul>
+
                 @await Html.PartialAsync("_LoginPartial")
                 <div class="user_option">
-
-
                     @await Component.InvokeAsync("Cart")
                 </div>
             </div>
