@@ -72,26 +72,13 @@ namespace FeaneFastFood
                 app.UseHsts();
             }
 
-            var supportedCultures = new[]
-{
-                new CultureInfo("tr-TR"),
-                new CultureInfo("en-US")
-
-            };
-
-            app.UseRequestLocalization(new RequestLocalizationOptions
-            {
-                DefaultRequestCulture = new RequestCulture("en-Us"),
-                SupportedCultures = supportedCultures,
-                SupportedUICultures = supportedCultures
-            });
 
             dbInitializer.Initialize();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404", "?code={0}");
+
 
             app.UseRouting();
 
@@ -101,15 +88,8 @@ namespace FeaneFastFood
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapControllerRoute(
-                     name: "areas",
-                 pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-                );
-
-                
+                endpoints.MapControllerRoute("areas", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

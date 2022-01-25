@@ -51,7 +51,7 @@ namespace FeaneFastFood.Areas.Admin.Controllers
         // GET: Admin/Foods/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name");
             return View();
         }
 
@@ -69,7 +69,7 @@ namespace FeaneFastFood.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", food.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", food.CategoryId);
             return View(food);
         }
 
@@ -86,7 +86,7 @@ namespace FeaneFastFood.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", food.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", food.CategoryId);
             return View(food);
         }
 
@@ -122,7 +122,7 @@ namespace FeaneFastFood.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", food.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", food.CategoryId);
             return View(food);
         }
 

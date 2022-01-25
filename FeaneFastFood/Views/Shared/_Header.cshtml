@@ -26,13 +26,13 @@
 
 
                     <li class="nav-item @ViewBag.home">
-                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item @ViewBag.about">
-                        <a class="nav-link" asp-controller="About" asp-action="Index"> About Us</a>
+                        <a class="nav-link" asp-area="" asp-controller="About" asp-action="Index"> About Us</a>
                     </li>
                     <li class="nav-item @ViewBag.comment">
-                        <a class="nav-link" asp-controller="Comment" asp-action="Index">  Leave a Comment</a>
+                        <a class="nav-link" asp-area="" asp-controller="Comment" asp-action="Index">  Leave a Comment</a>
                     </li>
 
                     @if (User.IsInRole("Admin"))

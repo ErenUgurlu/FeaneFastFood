@@ -40,7 +40,8 @@ namespace DataAccessLayer.Concrete
             {
 
             }
-            
+            if (!_db.UserRoles.Any() && _db.Roles.Any(r => r.Name == "Admin"))
+                _userManager.AddToRoleAsync(_db.Users.FirstOrDefaultAsync(u => u.Email == "admin@gmail.com").GetAwaiter().GetResult(), "Admin").GetAwaiter().GetResult();
             if (_db.Roles.Any(r => r.Name == "Admin")) return;
 
             _roleManager.CreateAsync(new IdentityRole("Admin")).GetAwaiter().GetResult();
@@ -56,7 +57,7 @@ namespace DataAccessLayer.Concrete
                 PhoneNumber = "5533312028"
             }, "Admin123!");
 
-            _userManager.AddToRoleAsync(_db.Users.FirstOrDefaultAsync(u => u.Email == "admin@gmail.com").GetAwaiter().GetResult(), "Admin").GetAwaiter().GetResult();
+            
 
 
         }
